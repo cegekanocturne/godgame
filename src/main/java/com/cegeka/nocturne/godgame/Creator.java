@@ -4,7 +4,7 @@ public class Creator {
 
     private long startDayTime;
 
-    private boolean paused;
+    private boolean paused = false;
 
     private final World world;
 
@@ -41,6 +41,11 @@ public class Creator {
 
     public boolean isPaused() {
         return paused;
+    }
+
+    public static void main(String[] args) {
+        Creator creator = new Creator();
+        creator.start();
     }
 
 
