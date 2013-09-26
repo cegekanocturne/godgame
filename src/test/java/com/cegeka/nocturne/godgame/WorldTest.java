@@ -20,6 +20,11 @@ public class WorldTest {
         world = new World(5);
     }
 
+    @Test
+    public void testDrawWorld(){
+        world.drawWorld();
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void givenASizeSmallerOrEqualToZero_whenCreatingAWorld_thenThrowIllegalArgumentException() {
         new World(0);
