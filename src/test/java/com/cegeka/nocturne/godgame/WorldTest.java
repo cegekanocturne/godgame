@@ -44,4 +44,17 @@ public class WorldTest {
 
         assertThat(world.getAge()).isEqualTo(1);
     }
+
+    @Test
+    public void testPause() {
+        world.pause();
+        assertThat(world.isPaused()).isTrue();
+    }
+
+    @Test
+    public void testResume() {
+        world.resume();
+        assertThat(world.isPaused()).isFalse();
+    }
+
 }
