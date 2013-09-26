@@ -1,5 +1,6 @@
 package com.cegeka.nocturne.godgame;
 
+import org.fest.assertions.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +19,13 @@ public class WorldTest {
     @Before
     public void setup() {
         world = new World(5);
+    }
+
+    @Test
+    public void testDrawWorld() {
+        String draw = world.drawWorld();
+        Assertions.assertThat(draw.length()).isEqualTo(25);
+
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -66,6 +74,38 @@ public class WorldTest {
         world.passTheDay();
 
         assertThat(findTheDeer()).isNotNull();
+        assertThat(world.getCell(0, 0)).isNull();
+    }
+
+    @Test
+    public void givenAWorld_WorldDoesNotHaveGrass() {
+        World world = new World(5);
+        assertThat(world.hasCreatureofType(new Grass())).isEqualTo(false);
+    }
+
+    @Test
+    public void givenAWorld_WhenGrowGrass_WorldHasGrass() {
+
+        assertThat(world.hasCreatureofType(new Grass())).isEqualTo(false);
+    }
+
+    @Test
+    public void givenAWorldOfAge6Days_WhenGrowGrass_WorldHasGrass() {
+        passDays(7,world);
+        assertThat(world.hasCreatureofType(new Grass())).isEqualTo(true);
+    }
+
+    @Test
+    public void givenAWorldOfAge5Days_WhenGrowGrass_WorldHasGrass() {
+        passDays(6,world);
+        assertThat(world.hasCreatureofType(new Grass())).isEqualTo(false);
+    }
+
+
+    public void passDays(int d, World world) {
+        for (int i = 1; i <= d; i++) {
+            world.passTheDay();
+        }
     }
 
     @Test
