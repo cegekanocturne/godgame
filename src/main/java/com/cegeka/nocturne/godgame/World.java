@@ -43,6 +43,7 @@ public class World {
                 }
             }
         drawWorld();
+        System.out.println();
     }
 
     private void growGrass(){
