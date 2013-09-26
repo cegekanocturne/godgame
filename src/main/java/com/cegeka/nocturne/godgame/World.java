@@ -1,5 +1,7 @@
 package com.cegeka.nocturne.godgame;
 
+import org.fest.util.VisibleForTesting;
+
 public class World {
     private final int size;
     private Creature[][] cells = null;
@@ -7,7 +9,7 @@ public class World {
     int daysCounter;
 
     public World(int i) {
-        if(i <= 0) {
+        if (i <= 0) {
             throw new IllegalArgumentException("Size should be bigger than 0.");
         }
         this.size = i;
@@ -56,5 +58,16 @@ public class World {
         return false;
     }
 
-
+    @VisibleForTesting
+    public void drawWorld() {
+        StringBuffer drawing = new StringBuffer();
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++) {
+                Creature creature = cells[i][j];
+                if (creature == null) {
+                    drawing.append("O");
+                } else drawing.append(creature.render());
+            }
+        System.out.println(drawing);
+    }
 }
