@@ -9,6 +9,11 @@ public class Deer implements Creature {
     }
 
     @Override
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
     public void age() {
         age++;
     }
@@ -16,5 +21,10 @@ public class Deer implements Creature {
     @Override
     public boolean shouldDie() {
         return age == 30;
+    }
+
+    @Override
+    public String render() {
+        return "D";
     }
 }
