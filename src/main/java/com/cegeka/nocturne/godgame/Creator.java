@@ -23,8 +23,9 @@ public class Creator {
                 if (currentTime - startDayTime < 5 * 1000) {
                     continue;
                 }
-                world.daysCounter++;
+
                 startDayTime = currentTime;
+                world.passTheDay();
             }
         }
     }
