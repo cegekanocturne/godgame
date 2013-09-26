@@ -59,15 +59,26 @@ public class World {
     }
 
     @VisibleForTesting
-    public void drawWorld() {
-        StringBuffer drawing = new StringBuffer();
-        for (int i = 0; i < size; i++)
+    public String drawWorld() {
+        StringBuilder drawnWorld = new StringBuilder();
+
+        for (int i = 0; i < size; i++) {
+            StringBuffer line = new StringBuffer();
+            System.out.println();
             for (int j = 0; j < size; j++) {
-                Creature creature = cells[i][j];
-                if (creature == null) {
-                    drawing.append("O");
-                } else drawing.append(creature.render());
+                drawCell(line, i, j);
             }
-        System.out.println(drawing);
+            System.out.print(line);
+            drawnWorld.append(line);
+        }
+
+        return drawnWorld.toString();
+    }
+
+    private void drawCell(StringBuffer drawing, int i, int j) {
+        Creature creature = cells[i][j];
+        if (creature == null) {
+            drawing.append("O");
+        } else drawing.append(creature.render());
     }
 }

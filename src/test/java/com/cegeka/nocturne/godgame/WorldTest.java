@@ -1,5 +1,6 @@
 package com.cegeka.nocturne.godgame;
 
+import org.fest.assertions.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +23,9 @@ public class WorldTest {
 
     @Test
     public void testDrawWorld() {
-        world.drawWorld();
+        String draw = world.drawWorld();
+        Assertions.assertThat(draw.length()).isEqualTo(25);
+
     }
 
     @Test(expected = IllegalArgumentException.class)
