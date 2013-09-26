@@ -2,6 +2,8 @@ package com.cegeka.nocturne.godgame;
 
 import org.fest.util.VisibleForTesting;
 
+import java.util.Random;
+
 public class World {
     private final int size;
     private Creature[][] cells = null;
@@ -30,7 +32,7 @@ public class World {
 
     public void passTheDay() {
         this.daysCounter++;
-
+        growGrass();
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++) {
                 if (cells[i][j] != null) {
@@ -40,6 +42,15 @@ public class World {
                     }
                 }
             }
+    }
+
+    private void growGrass(){
+        Random r = new Random();
+        if (getAge()>5){
+            int i=r.nextInt(size);
+            int j=r.nextInt(size);
+            cells[i][j]=new Grass();
+        }
     }
 
     public int getAge() {
