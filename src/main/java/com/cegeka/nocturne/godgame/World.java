@@ -1,18 +1,17 @@
 package com.cegeka.nocturne.godgame;
 
+import org.fest.util.VisibleForTesting;
+
 import java.util.Random;
 
 public class World {
     private final int size;
     private Creature[][] cells = null;
-    private volatile int daysCounter;
 
-    private long startDayTime;
-
-    private boolean paused;
+    int daysCounter;
 
     public World(int i) {
-        if(i <= 0) {
+        if (i <= 0) {
             throw new IllegalArgumentException("Size should be bigger than 0.");
         }
         this.size = i;
@@ -70,34 +69,16 @@ public class World {
         return false;
     }
 
-    public void start() {
-        timePassed();
-    }
-
-    private void timePassed() {
-        if(!paused) {
-            while (true) {
-                long currentTime = System.currentTimeMillis();
-                if (currentTime - startDayTime < 5 * 1000) {
-                    continue;
-                }
-                daysCounter++;
-                startDayTime = currentTime;
+    @VisibleForTesting
+    public void drawWorld() {
+        StringBuffer drawing = new StringBuffer();
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++) {
+                Creature creature = cells[i][j];
+                if (creature == null) {
+                    drawing.append("O");
+                } else drawing.append(creature.render());
             }
-        }
+        System.out.println(drawing);
     }
-
-
-    public void pause() {
-        paused = true;
-    }
-
-    public void resume() {
-        paused = false;
-    }
-
-    public boolean isPaused() {
-        return paused;
-    }
-
 }

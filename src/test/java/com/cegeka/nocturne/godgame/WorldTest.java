@@ -20,6 +20,11 @@ public class WorldTest {
         world = new World(5);
     }
 
+    @Test
+    public void testDrawWorld() {
+        world.drawWorld();
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void givenASizeSmallerOrEqualToZero_whenCreatingAWorld_thenThrowIllegalArgumentException() {
         new World(0);
@@ -57,23 +62,6 @@ public class WorldTest {
     }
 
     @Test
-    public void testPause() {
-        world.pause();
-        assertThat(world.isPaused()).isTrue();
-    }
-
-    @Test
-    public void testResume() {
-        world.resume();
-        assertThat(world.isPaused()).isFalse();
-    }
-
-
-    //    public void givenAWorldOfAge5Days_AfterDayPass_WorldDoesNotHaveGrass(){
-//        World world = new World(5);
-//        passDays(5, world);
-//    }
-    @Test
     public void givenAWorld_WorldDoesNotHaveGrass() {
         World world = new World(5);
         assertThat(world.hasCreatureofType(new Grass())).isEqualTo(false);
@@ -81,7 +69,7 @@ public class WorldTest {
 
     @Test
     public void givenAWorld_WhenGrowGrass_WorldHasGrass() {
-//        World world = new World(5);
+
         assertThat(world.hasCreatureofType(new Grass())).isEqualTo(false);
     }
 
