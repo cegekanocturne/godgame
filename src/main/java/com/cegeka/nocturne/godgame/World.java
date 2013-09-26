@@ -48,10 +48,10 @@ public class World {
     }
 
     public void start() {
-        timePassed();
+        incrementTime();
     }
 
-    private void timePassed() {
+    private void incrementTime() {
         if(!paused) {
             while (true) {
                 long currentTime = System.currentTimeMillis();
