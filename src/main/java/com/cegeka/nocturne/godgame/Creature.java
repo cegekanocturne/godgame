@@ -5,5 +5,7 @@ public interface Creature {
 
     int getAge();
 
+    void age();
 
+    boolean shouldDie();
 }

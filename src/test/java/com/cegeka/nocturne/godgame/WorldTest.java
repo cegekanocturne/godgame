@@ -37,11 +37,22 @@ public class WorldTest {
         assertThat(world.getCell(0, 0)).isEqualTo(creature);
     }
 
-
     @Test
     public void givenAWorld_whenDayPasses_thenWorldAges() {
         world.passTheDay();
 
         assertThat(world.getAge()).isEqualTo(1);
+    }
+
+    @Test
+    public void givenAGrass_it_should_die_in_the_14th_day() {
+        world.setCell(new Grass(), 0, 0);
+        for (int i = 0; i < 13; i++) {
+            world.passTheDay();
+        }
+
+        world.passTheDay();
+
+        assertThat(world.getCell(0, 0)).isNull();
     }
 }
