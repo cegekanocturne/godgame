@@ -14,4 +14,13 @@ public class Grass implements Creature {
         return age;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
+	@Override
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public boolean spawnNewGrass() {
+		return false;
+	}
+
 }
