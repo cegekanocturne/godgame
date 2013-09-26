@@ -31,6 +31,16 @@ public class World {
 
     public void passTheDay() {
         this.daysCounter++;
+
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++) {
+                if (cells[i][j] != null) {
+                    cells[i][j].age();
+                    if (cells[i][j].shouldDie()) {
+                        cells[i][j] = null;
+                    }
+                }
+            }
     }
 
     public int getAge() {
