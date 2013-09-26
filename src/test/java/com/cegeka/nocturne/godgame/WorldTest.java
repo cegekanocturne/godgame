@@ -75,15 +75,13 @@ public class WorldTest {
 
     @Test
     public void givenAWorldOfAge6Days_WhenGrowGrass_WorldHasGrass() {
-        World world = new World(5);
-        passDays(6,world);
+        passDays(7,world);
         assertThat(world.hasCreatureofType(new Grass())).isEqualTo(true);
     }
 
     @Test
     public void givenAWorldOfAge5Days_WhenGrowGrass_WorldHasGrass() {
-        World world = new World(5);
-        passDays(5,world);
+        passDays(6,world);
         assertThat(world.hasCreatureofType(new Grass())).isEqualTo(false);
     }
 

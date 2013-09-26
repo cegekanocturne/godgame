@@ -46,7 +46,7 @@ public class World {
 
     private void growGrass(){
         Random r = new Random();
-        if (getAge()>5){
+        if (getAge()%7==0){
             int i=r.nextInt(size);
             int j=r.nextInt(size);
             cells[i][j]=new Grass();
