@@ -56,16 +56,4 @@ public class WorldTest {
         assertThat(world.getCell(0, 0)).isNull();
     }
 
-    @Test
-    public void testPause() {
-        world.pause();
-        assertThat(world.isPaused()).isTrue();
-    }
-
-    @Test
-    public void testResume() {
-        world.resume();
-        assertThat(world.isPaused()).isFalse();
-    }
-
 }
