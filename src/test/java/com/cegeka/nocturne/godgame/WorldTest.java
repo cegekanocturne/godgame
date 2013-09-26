@@ -21,7 +21,7 @@ public class WorldTest {
     }
 
     @Test
-    public void testDrawWorld(){
+    public void testDrawWorld() {
         world.drawWorld();
     }
 
@@ -61,10 +61,6 @@ public class WorldTest {
         assertThat(world.getCell(0, 0)).isNull();
     }
 
-    //    public void givenAWorldOfAge5Days_AfterDayPass_WorldDoesNotHaveGrass(){
-//        World world = new World(5);
-//        passDays(5, world);
-//    }
     @Test
     public void givenAWorld_WorldDoesNotHaveGrass() {
         World world = new World(5);
@@ -73,7 +69,7 @@ public class WorldTest {
 
     @Test
     public void givenAWorld_WhenGrowGrass_WorldHasGrass() {
-//        World world = new World(5);
+
         assertThat(world.hasCreatureofType(new Grass())).isEqualTo(false);
     }
 
