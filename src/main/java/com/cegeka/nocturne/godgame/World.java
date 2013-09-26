@@ -42,6 +42,7 @@ public class World {
                     }
                 }
             }
+        drawWorld();
     }
 
     private void growGrass(){

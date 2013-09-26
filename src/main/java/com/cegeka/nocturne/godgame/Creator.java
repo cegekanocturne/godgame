@@ -4,7 +4,7 @@ public class Creator {
 
     private long startDayTime;
 
-    private boolean paused;
+    private boolean paused = false;
 
     private final World world;
 
