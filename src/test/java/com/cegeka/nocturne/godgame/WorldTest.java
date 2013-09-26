@@ -56,4 +56,25 @@ public class WorldTest {
         assertThat(world.getCell(0, 0)).isNull();
     }
 
+    //    public void givenAWorldOfAge5Days_AfterDayPass_WorldDoesNotHaveGrass(){
+//        World world = new World(5);
+//        passDays(5, world);
+//    }
+    @Test
+    public void givenAWorld_WorldDoesNotHaveGrass() {
+        World world = new World(5);
+        assertThat(world.hasCreatureofType(new Grass())).isEqualTo(false);
+    }
+
+    @Test
+    public void givenAWorld_WhenGrowGrass_WorldHasGrass() {
+//        World world = new World(5);
+        assertThat(world.hasCreatureofType(new Grass())).isEqualTo(false);
+    }
+
+    public void passDays(int d, World world) {
+        for (int i = 1; i <= d; i++) {
+            world.passTheDay();
+        }
+    }
 }
