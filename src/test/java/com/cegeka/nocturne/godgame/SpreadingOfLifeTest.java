@@ -23,9 +23,4 @@ public class SpreadingOfLifeTest {
 		assertThat(grass.spawnNewGrass()).isEqualTo(false); // < 7
 	}
 	
-	@Test
-	public void spawnNewGrassTest7Days() {
-		grass.setAge(7); // == 7 -> should spawn
-		assertThat(grass.spawnNewGrass()).isEqualTo(true);
-	}
 }
