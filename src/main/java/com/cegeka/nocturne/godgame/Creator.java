@@ -43,5 +43,10 @@ public class Creator {
         return paused;
     }
 
+    public static void main(String[] args) {
+        Creator creator = new Creator();
+        creator.start();
+    }
+
 
 }
