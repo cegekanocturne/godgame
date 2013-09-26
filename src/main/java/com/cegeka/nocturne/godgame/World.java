@@ -3,11 +3,8 @@ package com.cegeka.nocturne.godgame;
 public class World {
     private final int size;
     private Creature[][] cells = null;
-    private volatile int daysCounter;
 
-    private long startDayTime;
-
-    private boolean paused;
+    int daysCounter;
 
     public World(int i) {
         if(i <= 0) {
@@ -42,7 +39,6 @@ public class World {
                 }
             }
     }
-
 
     public int getAge() {
         return daysCounter;
