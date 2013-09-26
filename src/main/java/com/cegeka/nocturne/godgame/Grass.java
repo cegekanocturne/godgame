@@ -24,4 +24,9 @@ public class Grass implements Creature {
         return age == 14;
     }
 
+    @Override
+    public String render() {
+        return "G";
+    }
+
 }

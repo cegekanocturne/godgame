@@ -43,8 +43,21 @@ public class World {
             }
     }
 
+
     public int getAge() {
         return daysCounter;
+    }
+
+    public boolean hasCreatureofType(Creature creature) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                Creature creature1 = cells[i][j];
+                if (creature1 != null && creature1.getClass().equals(creature.getClass())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void start() {

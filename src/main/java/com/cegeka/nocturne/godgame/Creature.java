@@ -8,4 +8,6 @@ public interface Creature {
     void age();
 
     boolean shouldDie();
+
+    String render();
 }
