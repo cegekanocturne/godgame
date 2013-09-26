@@ -1,5 +1,7 @@
 package com.cegeka.nocturne.godgame;
 
+import org.junit.Test;
+
 /**
  * File created for godgame project
  * By: alincr
@@ -9,4 +11,5 @@ public class GrassTest {
     public void testGetAge() throws Exception {
 
     }
+
 }

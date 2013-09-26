@@ -22,5 +22,16 @@ public class Grass implements Creature {
 	public boolean spawnNewGrass() {
 		return false;
 	}
+	
+	 @Override
+    public void age() {
+        age++;
+    }
+
+    @Override
+    public boolean shouldDie() {
+        return age == 14;
+    }
+	
 
 }
