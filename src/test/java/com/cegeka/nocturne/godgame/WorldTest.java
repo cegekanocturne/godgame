@@ -73,6 +73,21 @@ public class WorldTest {
         assertThat(world.hasCreatureofType(new Grass())).isEqualTo(false);
     }
 
+    @Test
+    public void givenAWorldOfAge6Days_WhenGrowGrass_WorldHasGrass() {
+        World world = new World(5);
+        passDays(6,world);
+        assertThat(world.hasCreatureofType(new Grass())).isEqualTo(true);
+    }
+
+    @Test
+    public void givenAWorldOfAge5Days_WhenGrowGrass_WorldHasGrass() {
+        World world = new World(5);
+        passDays(5,world);
+        assertThat(world.hasCreatureofType(new Grass())).isEqualTo(false);
+    }
+
+
     public void passDays(int d, World world) {
         for (int i = 1; i <= d; i++) {
             world.passTheDay();
