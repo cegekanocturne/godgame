@@ -4,5 +4,3 @@
 .settings/
 *.iml
 target/
-.metadata
-bin
