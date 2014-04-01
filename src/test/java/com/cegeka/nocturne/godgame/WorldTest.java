@@ -13,7 +13,6 @@ public class WorldTest {
 
     @Mock
     private Creature creature;
-    
     private World world;
 
     @Before
