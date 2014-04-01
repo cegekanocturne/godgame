@@ -5,6 +5,7 @@ public class World {
     private Creature[][] cells = null;
     private int daysCounter;
 
+
     public World(int i) {
         
         if(i <= 0) {
