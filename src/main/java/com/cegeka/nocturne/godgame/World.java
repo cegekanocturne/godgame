@@ -9,7 +9,7 @@ public class World {
         if(i <= 0) {
             throw new IllegalArgumentException("Size should be bigger than 0.");
         }
-        this.size = i;;		
+        this.size = i;		
         cells = new Creature[i][i];
     }
 
