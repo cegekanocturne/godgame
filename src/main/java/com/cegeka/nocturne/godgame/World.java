@@ -6,6 +6,7 @@ public class World {
     private int daysCounter;
 
     public World(int i) {
+        
         if(i <= 0) {
             throw new IllegalArgumentException("Size should be bigger than 0.");
         }
