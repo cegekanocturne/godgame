@@ -1,9 +1,7 @@
 package com.cegeka.nocturne.godgame;
 
 
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Random;
+import java.util.*;
 
 public class World implements ITimeListener {
 
