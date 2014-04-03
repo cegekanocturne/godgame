@@ -9,4 +9,5 @@ public interface ITimer {
     void pause();
     void resume();
 
+    void registerTimeListener(ITimeListener listener);
 }

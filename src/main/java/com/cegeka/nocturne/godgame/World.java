@@ -7,13 +7,13 @@ public class World {
     private Creature[][] cells = null;
     private int daysCounter;
 
-
-    public World(int worldSize) {
-        if(worldSize <= 0) {
+    public World(int i) {
+        
+        if(i <= 0) {
             throw new IllegalArgumentException("Size should be bigger than 0.");
         }
-        this.size = worldSize;
-        cells = new Creature[worldSize][worldSize];
+        this.size = i;		
+        cells = new Creature[i][i];
     }
 
     public double getCellCount() {
