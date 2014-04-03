@@ -13,6 +13,7 @@ public class World {
         }
         this.size = i;		
         cells = new Creature[i][i];
+
     }
 
     public double getCellCount() {
