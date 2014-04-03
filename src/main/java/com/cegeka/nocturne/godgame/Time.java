@@ -24,7 +24,7 @@ public class Time {
                 }
             }
         };
-        timer.scheduleAtFixedRate(task, 0, 5000);
+        timer.scheduleAtFixedRate(task, 500, 5000);
     }
 
     public void pause() {
