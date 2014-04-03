@@ -18,7 +18,6 @@ import static org.fest.assertions.Assertions.assertThat;
 @RunWith(MockitoJUnitRunner.class)
 public class TimeTest {
 
-    @Mock
     private World world;
 
     @Before
@@ -27,16 +26,9 @@ public class TimeTest {
     }
 
     @Test
-    public void dummy() {
-
-    }
-    //@Test
     public void givenAWorld_whenFiveRealSecPasses_thenOneGameDayPasses() throws InterruptedException {
         int age = world.getAge();
         Thread.sleep(5000);
-        //world.
-        //Timer t;
-        //t.scheduleAtFixedRate();
         assertThat(world.getAge()).isEqualTo(age+1);
     }
 }

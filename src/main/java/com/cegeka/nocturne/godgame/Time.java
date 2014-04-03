@@ -20,7 +20,7 @@ public class Time implements ITimer {
             @Override
             public void run() {
                 for ( ITimeListener listener : listeners) {
-                    listener.dayHasPassed();
+                    listener.passTheDay();
                 }
             }
         };
@@ -29,12 +29,7 @@ public class Time implements ITimer {
 
     @Override
     public void pause() {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public void resume() {
-        //To change body of implemented methods use File | Settings | File Templates.
+        timer.cancel();
     }
 
     @Override

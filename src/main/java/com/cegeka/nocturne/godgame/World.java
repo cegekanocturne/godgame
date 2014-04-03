@@ -2,10 +2,11 @@ package com.cegeka.nocturne.godgame;
 
 import java.util.Arrays;
 
-public class World {
+public class World implements ITimeListener {
     private final int size;
     private Creature[][] cells = null;
     private int daysCounter;
+    Time time;
 
     public World(int i) {
         
@@ -14,6 +15,13 @@ public class World {
         }
         this.size = i;		
         cells = new Creature[i][i];
+        time = new Time();
+        time.registerTimeListener(this);
+        time.start();
+    }
+
+    public Time getTime() {
+        return time;
     }
 
     public double getCellCount() {

@@ -5,5 +5,5 @@ package com.cegeka.nocturne.godgame;
  * Time: 21:21
  */
 public interface ITimeListener {
-    void dayHasPassed();
+    void passTheDay();
 }
