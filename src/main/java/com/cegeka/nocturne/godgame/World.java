@@ -1,9 +1,13 @@
 package com.cegeka.nocturne.godgame;
 
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.Arrays;
 
 public class World implements ITimeListener {
+
+
     private final int size;
     private Creature[][] cells = null;
     private int daysCounter;
@@ -39,6 +43,7 @@ public class World implements ITimeListener {
 
     public void passTheDay() {
         this.daysCounter++;
+
         // increment age of each creature
         for ( Creature[] row : cells ) {
             for ( Creature creature : row) {
@@ -48,9 +53,8 @@ public class World implements ITimeListener {
             }
         }
         // each 7 seven days new grass appears in empty spots (STR-4)
-        if ( daysCounter % 7 == 0) {
-
-        }
+        if(this.daysCounter % 7 == 0)
+            this.generateGrass();
         // grass expands (STR-5)
     }
 
@@ -74,4 +78,32 @@ public class World implements ITimeListener {
         return sb.toString();
     }
 
+    public void generateGrass() {
+           List<Position> freeCells = this.getFreeCells();
+           Position randFreeCell = freeCells.get((int) Math.round(Math.random() * freeCells.size()));
+
+           this.setCell(new Grass(), randFreeCell.x, randFreeCell.y);
+    }
+
+    public List<Position> getFreeCells() {
+        List<Position> result = new ArrayList<Position>();
+        for(int x=0; x< this.size; x++)
+            for(int y=0; y< this.size; y++){
+                if(this.getCell(x,y) == null){
+                    result.add(new Position(x,y));
+                }
+            }
+
+        return result;
+    }
+
+    private class Position{
+        int x;
+        int y;
+
+        public Position(int x, int y){
+            this.x = x;
+            this.y = y;
+        }
+    }
 }
