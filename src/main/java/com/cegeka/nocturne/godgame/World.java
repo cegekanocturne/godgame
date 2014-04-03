@@ -1,9 +1,7 @@
 package com.cegeka.nocturne.godgame;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class World implements ITimeListener {
 
@@ -43,12 +41,16 @@ public class World implements ITimeListener {
 
     public void passTheDay() {
         this.daysCounter++;
-
         // increment age of each creature
-        for ( Creature[] row : cells ) {
-            for ( Creature creature : row) {
+        for ( int i = 0; i < size; i++ ) {
+            for ( int j = 0; j < size; j++ ) {
+                Creature creature = cells[i][j];
                 if ( creature != null ) {
                     creature.incrementAge();
+                    if ( creature.getAge() % 7 == 0) {
+                        newGrassNearby(i, j);
+                    }
+
                 }
             }
         }
@@ -78,11 +80,50 @@ public class World implements ITimeListener {
         return sb.toString();
     }
 
-    public void generateGrass() {
-           List<Position> freeCells = this.getFreeCells();
-           Position randFreeCell = freeCells.get((int) Math.round(Math.random() * freeCells.size()) - 1);
+    private void newGrassNearby(int x, int y){
+        LinkedHashMap<Integer, Integer> emptyCells = new LinkedHashMap<>(8);
 
-           this.setCell(new Grass(), randFreeCell.x, randFreeCell.y);
+        for(int i = x -1; i < x + 1; i++){
+            for(int j = y - 1; j < y + 1; j++){
+                if(insidePoint(i, j)){
+                    if(getCell(i , j) == null){
+                        emptyCells.put(i, j);
+                    }
+                }
+            }
+        }
+
+        if(emptyCells.size() > 0){
+            int index = new Random().nextInt(emptyCells.size()-1);
+            Iterator<Integer> iterator = emptyCells.keySet().iterator();
+            int k = 0;
+            while (iterator.hasNext()){
+                int key = iterator.next();
+                if(index == k){
+                    int value = emptyCells.get(key);
+                    setCell(new Grass(), key, value);
+                    return;
+                }
+                k++;
+            }
+        }
+    }
+
+    private boolean insidePoint(int x, int y){
+        if(x < 0 || x > size -1){
+            return false;
+        }
+        if(y < 0 || y > size - 1){
+            return false;
+        }
+        return true;
+    }
+    
+    public void generateGrass() {
+        List<Position> freeCells = this.getFreeCells();
+        Position randFreeCell = freeCells.get((int) Math.round(Math.random() * freeCells.size()) - 1);
+
+        this.setCell(new Grass(), randFreeCell.x, randFreeCell.y);
     }
 
     public List<Position> getFreeCells() {

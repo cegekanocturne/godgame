@@ -23,17 +23,24 @@ public class GrassSpreadTest {
     @Before
     public void setup() {
         creature = new Grass();
+
     }
 
     @Test
     public void givenASCellContainingGrass_whenAgeOfGrass7Days_thenOccupyNearbyEmptyCell() {
         when(world.getCell(1,1)).thenReturn(creature);
 
+
         Creature myCreature = world.getCell(1,1);
 
         assertThat(myCreature instanceof  Grass);
 
-        assertThat(myCreature.getAge()).isEqualTo(0);
+//        assertThat(myCreature.getAge()).isEqualTo(7);
+
+        for (int i = 0; i < 7 ; i++){
+            myCreature.incrementAge();
+        }
+
     }
 
 
