@@ -35,4 +35,8 @@ public class Time {
     public void registerTimeListener(ITimeListener listener) {
         listeners.add(listener);
     }
+
+    public void resume(){
+        start();
+    }
 }
