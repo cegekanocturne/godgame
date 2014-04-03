@@ -13,6 +13,7 @@ public class WorldTest {
 
     @Mock
     private Creature creature;
+    
     private World world;
 
     @Before
@@ -33,14 +34,12 @@ public class WorldTest {
     @Test
     public void givenAWorld_whenRetrievingACell_thenPreviouslySavedCellIsReturned() {
         world.setCell(creature, 0, 0);
-
         assertThat(world.getCell(0, 0)).isEqualTo(creature);
     }
 
     @Test
     public void givenAWorld_whenDayPasses_thenWorldAges() {
         world.passTheDay();
-
         assertThat(world.getAge()).isEqualTo(1);
     }
 }
