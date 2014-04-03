@@ -28,7 +28,7 @@ public class WorldTest {
 
     @Test
     public void givenASize_whenCreatingAWorld_thenWorldHasCorrectCellCount() {
-        assertThat(world.getCellCount()).isEqualTo(26);
+        assertThat(world.getCellCount()).isEqualTo(25);
     }
 
     @Test
