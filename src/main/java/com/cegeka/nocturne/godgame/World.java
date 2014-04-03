@@ -36,16 +36,20 @@ public class World {
         return daysCounter;
     }
 
-    public void showWorld() {
+    public int getSize() {
+        return size;
+    }
 
-        System.out.println( "This is the beautiful world:" );
-        System.out.println("---------------------------------");
-        for(int i=0; i<this.size; i++){
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<this.size; i++) {
             for (int j=0; j<this.size; j++)
-                System.out.format("%s   ",cells[i][j]);
-            System.out.println();
+                sb.append(cells[i][j] + " ");
+            sb.append(System.getProperty("line.separator"));
         }
 
-
+        return sb.toString();
     }
+
 }
