@@ -56,6 +56,8 @@ public class World implements ITimeListener {
         if(this.daysCounter % 7 == 0)
             this.generateGrass();
         // grass expands (STR-5)
+
+        toString();
     }
 
     public int getAge() {

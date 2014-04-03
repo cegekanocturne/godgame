@@ -14,8 +14,11 @@ public class StartWorld {
         while (!"q".equals(command)) {
             command = terminalInput.nextLine();
             if ("s".equals(command.toLowerCase()) || "start".equals(command.toLowerCase())) {
-                if (world == null)
+                if (world == null)  {
                     world = new World(5);
+                    world.getTime().start();
+                    System.out.println(world);
+                }
             }
             if ("p".equals(command.toLowerCase()) || "pause".equals(command.toLowerCase())) {
                 if (world == null)
