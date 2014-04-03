@@ -6,13 +6,12 @@ public class World {
     private int daysCounter;
 
 
-    public World(int i) {
-        if(i <= 0) {
+    public World(int worldSize) {
+        if(worldSize <= 0) {
             throw new IllegalArgumentException("Size should be bigger than 0.");
         }
-        this.size = i;		
-        cells = new Creature[i][i];
-
+        this.size = worldSize;
+        cells = new Creature[worldSize][worldSize];
     }
 
     public double getCellCount() {

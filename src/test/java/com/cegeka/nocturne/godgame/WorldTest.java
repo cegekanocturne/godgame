@@ -28,13 +28,12 @@ public class WorldTest {
 
     @Test
     public void givenASize_whenCreatingAWorld_thenWorldHasCorrectCellCount() {
-        assertThat(world.getCellCount()).isEqualTo(26);
+        assertThat(world.getCellCount()).isEqualTo(25);
     }
 
     @Test
     public void givenAWorld_whenRetrievingACell_thenPreviouslySavedCellIsReturned() {
         world.setCell(creature, 0, 0);
-
         assertThat(world.getCell(0, 0)).isEqualTo(creature);
     }
 
