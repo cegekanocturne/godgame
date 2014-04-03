@@ -17,4 +17,9 @@ public class Grass  implements Creature{
     public void incrementAge(){
         age++;
     }
+
+    @Override
+    public String toString() {
+        return " g  ";
+    }
 }
