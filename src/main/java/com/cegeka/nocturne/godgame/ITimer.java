@@ -6,5 +6,7 @@ package com.cegeka.nocturne.godgame;
  */
 public interface ITimer {
     void start();
+    void pause();
+    void resume();
 
 }
