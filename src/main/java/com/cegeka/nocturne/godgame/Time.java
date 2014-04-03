@@ -15,6 +15,7 @@ public class Time {
     List<ITimeListener> listeners = new ArrayList<>();
 
     public void start() {
+        System.out.println("World start NOW!!");
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -27,6 +28,7 @@ public class Time {
     }
 
     public void pause() {
+        System.out.println("World is tired, taking a pause....");
         timer.cancel();
     }
 
