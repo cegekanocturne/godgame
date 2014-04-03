@@ -48,6 +48,9 @@ public class World implements ITimeListener {
             }
         }
         // each 7 seven days new grass appears in empty spots (STR-4)
+        if ( daysCounter % 7 == 0) {
+
+        }
         // grass expands (STR-5)
     }
 
