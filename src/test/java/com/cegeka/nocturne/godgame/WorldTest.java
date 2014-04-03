@@ -13,6 +13,7 @@ public class WorldTest {
 
     @Mock
     private Creature creature;
+    
     private World world;
 
     @Before
@@ -27,7 +28,7 @@ public class WorldTest {
 
     @Test
     public void givenASize_whenCreatingAWorld_thenWorldHasCorrectCellCount() {
-        assertThat(world.getCellCount()).isEqualTo(25);
+        assertThat(world.getCellCount()).isEqualTo(26);
     }
 
     @Test
