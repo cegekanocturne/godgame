@@ -80,7 +80,7 @@ public class World implements ITimeListener {
 
     public void generateGrass() {
            List<Position> freeCells = this.getFreeCells();
-           Position randFreeCell = freeCells.get((int) Math.round(Math.random() * freeCells.size()));
+           Position randFreeCell = freeCells.get((int) Math.round(Math.random() * freeCells.size()) - 1);
 
            this.setCell(new Grass(), randFreeCell.x, randFreeCell.y);
     }
