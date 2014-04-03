@@ -1,5 +1,6 @@
 package com.cegeka.nocturne.godgame;
 
+
 import java.util.Arrays;
 
 public class World implements ITimeListener {
@@ -38,6 +39,16 @@ public class World implements ITimeListener {
 
     public void passTheDay() {
         this.daysCounter++;
+        // increment age of each creature
+        for ( Creature[] row : cells ) {
+            for ( Creature creature : row) {
+                if ( creature != null ) {
+                    creature.incrementAge();
+                }
+            }
+        }
+        // each 7 seven days new grass appears in empty spots (STR-4)
+        // grass expands (STR-5)
     }
 
     public int getAge() {
