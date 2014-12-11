@@ -17,7 +17,7 @@ public class WorldTest {
 
     @Before
     public void setup() {
-        world = new World(5);;
+        world = new World(5);
     }
 
     @Test(expected = IllegalArgumentException.class)
