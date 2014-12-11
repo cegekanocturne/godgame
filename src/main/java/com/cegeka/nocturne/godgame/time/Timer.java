@@ -14,8 +14,19 @@ public class Timer implements TimerInterface {
     public List<TimerListener> getTimerListeners() {
         return timerListeners;
     }
+    
+    private int dayPeriodMs=5000;
+    
 
-    public void addTimerListener(TimerListener timerListener) {
+    public int getDayPeriodMs() {
+		return dayPeriodMs;
+	}
+
+	public void setDayPeriodMs(int dayPeriodMs) {
+		this.dayPeriodMs = dayPeriodMs;
+	}
+
+	public void addTimerListener(TimerListener timerListener) {
         timerListeners.add(timerListener);
     }
 
@@ -28,22 +39,14 @@ public class Timer implements TimerInterface {
             @Override
             public void run() {
 
-                while (!shutDown.get()) {
-
-                    while (!stopped.get()) {
-                        try {
-
-                            Thread.sleep(5000);
-
-                            if (!stopped.get()) {
-                                for (TimerListener timerListener : timerListeners) {
-                                    timerListener.dayPassed();
-                                }
-                            }
-
-                        } catch (InterruptedException e) {
-                            System.out.println("World interrupted");
+                while (!stopped.get()) {
+                    try {
+                        Thread.sleep(dayPeriodMs);
+                        for (TimerListener timerListener : timerListeners) {
+                            timerListener.dayPassed();
                         }
+                    } catch (InterruptedException e) {
+                        System.out.println("World interrupted");
                     }
                 }
             }
