@@ -12,8 +12,12 @@ public class World {
         this.size = i;
         cells = new Creature[i][i];
     }
+    
+    public int getSize() {
+		return size;
+	}
 
-    public double getCellCount() {
+	public double getCellCount() {
         return this.size * this.size;
     }
 
@@ -32,4 +36,5 @@ public class World {
     public int getAge() {
         return daysCounter;
     }
+
 }
