@@ -7,5 +7,4 @@ public interface Creature {
     int getAge();
 
     void increaseAgeWithOneDay();
-
 }
