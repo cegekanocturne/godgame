@@ -25,39 +25,53 @@ public class DemoTest {
 		timer = new Timer();
 		timer.setDayPeriodMs(100);
 		timer.addTimerListener(world);
-		
-		Thread t=new Thread(new Runnable() {
+
+		Thread t = new Thread(new Runnable() {
 			@Override
 			public void run() {
-				displayer.display();
+				boolean doDisplay=true;
+				
+				while (true) {
+					if (doDisplay) {
+						displayer.display();
+					}
+
+					try {
+						if (System.in.available() != 0) {
+							char c = (char) System.in.read();
+							switch (c) {
+							case 'P':
+							case 'p':
+								pauseGame();
+								doDisplay=false;
+								break;
+							case 'r':
+							case 'R':
+								resumeGame();
+								doDisplay=true;
+								break;
+
+							}
+						}
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
 				try {
-					if (System.in.available() != 0) {
-						char c = (char) System.in.read();
-						switch (c) {
-						case 'P':
-						case 'p':
-							pauseGame();
+					Thread.sleep(50);
+				} catch (Exception e) {
 
-							break;
-						case 'r':
-						case 'R':
-							resumeGame();
-							break;
-
-						}
-					}
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				}
 				
+				}
+
 			}
-			
+
 		});
-		
+
 		t.start();
-		
+
 		timer.start();
 
 	}
