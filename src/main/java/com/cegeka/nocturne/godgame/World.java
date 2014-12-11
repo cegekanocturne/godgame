@@ -6,7 +6,6 @@ public class World implements TimerListener{
     private final int size;
     private Creature[][] cells = null;
     private int daysCounter;
-    private GrassGenerator grassGenerator=new GrassGenerator();
 
     public World(int i) {
         if(i <= 0) {
@@ -34,6 +33,16 @@ public class World implements TimerListener{
 
     public void passTheDay() {
         this.daysCounter++;
+                
+        for ( int i = 0; i < this.size; i++) {
+			for (int j = 0; j < this.size; j++) {
+				if (this.cells[i][j] != null) {
+					this.cells[i][j].increaseAgeWithOneDay();
+				}
+			}
+		}
+        
+        GrassGenerator.generateAndAddToWorld(daysCounter, this);
     }
 
     public int getAge() {
@@ -43,14 +52,5 @@ public class World implements TimerListener{
     @Override
     public void dayPassed() {
         passTheDay();
-        for ( int i = 0; i < size; i++) {
-			for (int j = 0; j < size; j++) {
-				if (cells[i][j] != null) {
-					cells[i][j].increaseAgeWithOneDay();
-				}
-			}
-		}
-        grassGenerator.generateAndAddToWorld(daysCounter, this);
     }
-
 }
