@@ -19,7 +19,7 @@ public class Displayer {
 				if (c == null) {
 					System.out.print(" ");
 				} else {
-					// TODO
+					System.out.print(c.getSymbol());
 				}
 
 			}
@@ -30,6 +30,8 @@ public class Displayer {
 
 
 		printEntireBorder();
+		
+		System.out.println("Time: "+world.getAge());
 	}
 
 	private void printEntireBorder() {
