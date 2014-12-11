@@ -1,23 +1,28 @@
 package com.cegeka.nocturne.godgame;
 
-public class GrassCreature implements Creature {
+import com.cegeka.nocturne.godgame.time.TimerListener;
 
+public class GrassCreature implements Creature, TimerListener {
+	private int age;
+	
 	@Override
 	public char getSymbol() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 'G';
 	}
 
 	@Override
 	public int getAge() {
-		// TODO Auto-generated method stub
-		return 0;
+		return age;
 	}
 
 	@Override
 	public void increaseAgeWithOneDay() {
-		// TODO Auto-generated method stub
+		age++;
+	}
 
+	@Override
+	public void dayPassed() {
+		increaseAgeWithOneDay();
 	}
 
 }
