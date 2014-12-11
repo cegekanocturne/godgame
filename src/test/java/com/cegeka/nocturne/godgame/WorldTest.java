@@ -36,21 +36,4 @@ public class WorldTest {
         world.setCell(creature, 0, 0);
         assertThat(world.getCell(0, 0)).isEqualTo(creature);
     }
-
-    @Test
-    public void givenAWorld_whenDayPasses_thenWorldAges() {
-        world.passTheDay();
-        assertThat(world.getAge()).isEqualTo(1);
-    }
-
-    @Test
-    public void testToString(){
-        StringBuilder expected = new StringBuilder();
-        for(int i=0; i<world.getSize(); i++) {
-            for (int j=0; j<world.getSize(); j++)
-                expected.append(world.getCell(i,j) + " ");
-            expected.append(System.getProperty("line.separator"));
-        }
-        assertThat(world.toString()).isEqualTo(expected.toString());
-    }
 }
