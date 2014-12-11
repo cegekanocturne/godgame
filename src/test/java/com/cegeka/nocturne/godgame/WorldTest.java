@@ -43,7 +43,6 @@ public class WorldTest {
     @Test
     public void givenAWorld_whenRetrievingACell_thenPreviouslySavedCellIsReturned() {
         world.setCell(creature, 0, 1);
-
         assertThat(world.getCell(0, 1)).isEqualTo(creature);
     }
 
