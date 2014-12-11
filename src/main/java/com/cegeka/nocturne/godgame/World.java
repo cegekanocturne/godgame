@@ -15,6 +15,10 @@ public class World implements TimerListener{
         cells = new Creature[i][i];
     }
 
+    public double getSize() {
+        return this.size;
+    }
+    
     public double getCellCount() {
         return this.size * this.size;
     }

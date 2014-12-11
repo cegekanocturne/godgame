@@ -25,4 +25,11 @@ public class GrassGeneratorTest {
         world.setCell(new NullCreature(), 0, 0);
         assertThat(generator.countUnocuppiedCells(world)).isEqualTo(24);
     }
+    
+//    @Test
+//    public void testGenerateRandomUnoccuppiedPozition() {
+//        assertThat(generator.countUnocuppiedCells(world)).isEqualTo(25);
+//        world.setCell(new NullCreature(), 0, 0);
+//        assertThat(generator.countUnocuppiedCells(world)).isEqualTo(24);
+//    }
 }

@@ -11,6 +11,15 @@ public class GrassGenerator {
 	}
 
 	public int countUnocuppiedCells(World world) {
-		return 0;
+		int count = 0;
+		for ( int i = 0; i < world.getSize(); i++) {
+			for (int j = 0; j < world.getSize(); j++) {
+				if (world.getCell(i, j) == null) {
+					count++;
+				}
+			}
+		}
+		
+		return count;
 	}
 }
