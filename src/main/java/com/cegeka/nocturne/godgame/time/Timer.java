@@ -9,6 +9,7 @@ public class Timer implements TimerInterface {
     private List<TimerListener> timerListeners = new ArrayList<>();
 
     private AtomicBoolean stopped;
+    private AtomicBoolean shutDown = new AtomicBoolean(false);
 
     public List<TimerListener> getTimerListeners() {
         return timerListeners;
@@ -27,14 +28,22 @@ public class Timer implements TimerInterface {
             @Override
             public void run() {
 
-                while (!stopped.get()) {
-                    try {
-                        Thread.sleep(5000);
-                        for (TimerListener timerListener : timerListeners) {
-                            timerListener.dayPassed();
+                while (!shutDown.get()) {
+
+                    while (!stopped.get()) {
+                        try {
+
+                            Thread.sleep(5000);
+
+                            if (!stopped.get()) {
+                                for (TimerListener timerListener : timerListeners) {
+                                    timerListener.dayPassed();
+                                }
+                            }
+
+                        } catch (InterruptedException e) {
+                            System.out.println("World interrupted");
                         }
-                    } catch (InterruptedException e) {
-                        System.out.println("World interrupted");
                     }
                 }
             }
@@ -44,12 +53,21 @@ public class Timer implements TimerInterface {
         timeThread.start();
     }
 
-    public void stop() {
+    public void pause() {
         stopped.set(true);
 
     }
 
     public void resume() {
         stopped.set(false);
+    }
+
+    @Override
+    public boolean getStopped() {
+        return stopped.get();
+    }
+
+    public void shutdown(){
+        this.shutDown.set(true);
     }
 }
