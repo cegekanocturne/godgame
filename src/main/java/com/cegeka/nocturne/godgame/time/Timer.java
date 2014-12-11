@@ -31,34 +31,50 @@ public class Timer implements TimerInterface {
     }
 
     public void start() {
-
         stopped = new AtomicBoolean(false);
+        startThread();
+    }
 
-        Runnable timeRunnable = new Runnable() {
-
-            @Override
-            public void run() {
-
-                while (!stopped.get()) {
-                    try {
-                        Thread.sleep(dayPeriodMs);
-                        for (TimerListener timerListener : timerListeners) {
-                            timerListener.dayPassed();
-                        }
-                    } catch (InterruptedException e) {
-                        System.out.println("World interrupted");
-                    }
-                }
-            }
-        };
-
+    public void startThread() {
+        Runnable timeRunnable = getTimerRunnable();
         Thread timeThread = new Thread(timeRunnable);
         timeThread.start();
     }
 
+    private Runnable getTimerRunnable() {
+        return new Runnable() {
+
+                @Override
+                public void run() {
+
+                    while (!shutDown.get()) {
+
+                        while (!stopped.get()) {
+                            try {
+
+                                Thread.sleep(5000);
+
+                                if (!stopped.get()) {
+                                    callListeners();
+                                }
+
+                            } catch (InterruptedException e) {
+                                System.out.println("World interrupted");
+                            }
+                        }
+                    }
+                }
+            };
+    }
+
+    public void callListeners() {
+        for (TimerListener timerListener : timerListeners) {
+            timerListener.dayPassed();
+        }
+    }
+
     public void pause() {
         stopped.set(true);
-
     }
 
     public void resume() {
