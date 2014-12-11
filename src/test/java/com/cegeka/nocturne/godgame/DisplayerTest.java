@@ -19,7 +19,7 @@ public class DisplayerTest {
 	}
 	
     @Test
-    public void itOutputsTo() {
+    public void itOutputsToOutputStreamWithNoCreatures() {
         World w = new World(2);
         Displayer d =new Displayer(w);
         
@@ -29,8 +29,26 @@ public class DisplayerTest {
         		"++++" + EOL + 
         		"+  +" + EOL +
         		"+  +" + EOL + 
-        		"++++" + EOL;
+        		"++++" + EOL +
+        		"Time: 0" + EOL;
 		Assertions.assertThat(outContent.toString()).isEqualTo(expected);
+    }
+    
+    @Test
+    public void itOutputsToOutputStreamWithCreatures() {
+    	World w = new World(2);
+    	w.setCell(new GrassCreature(), 1, 1);
+    	Displayer d = new Displayer(w);
+    	
+    	d.display();
+    	
+    	String expected=
+    			"++++" + EOL + 
+    			"+  +" + EOL +
+    			"+ G+" + EOL + 
+    			"++++" + EOL +
+    			"Time: 0" + EOL;
+    	Assertions.assertThat(outContent.toString()).isEqualTo(expected);
     }
     
 	@After
