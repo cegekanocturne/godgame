@@ -39,9 +39,9 @@ public class WorldTest {
 
 
     @Test
-    public void givenAWorld_whenDayPasses_thenWorldAges() {
+    public void givenABraveNewWorld_whenDayPasses_thenWorldAges() {
+        assertThat(world.getAge()).isEqualTo(0);
         world.passTheDay();
-
         assertThat(world.getAge()).isEqualTo(1);
     }
 }
