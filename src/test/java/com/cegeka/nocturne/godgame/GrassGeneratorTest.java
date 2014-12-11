@@ -13,6 +13,8 @@ import static org.fest.assertions.Assertions.assertThat;
 public class GrassGeneratorTest {
 	private World world;
 	private GrassGenerator generator;
+    @Mock
+    private Creature dummyCreature;
 
 	@Before
 	public void setup() {
@@ -42,24 +44,17 @@ public class GrassGeneratorTest {
 
 	}
 
-	//@Test
-	@Ignore
+	@Test
 	public void havingDays7_generateOneGrass() {
 		for (int i = 0; i < world.getSize(); i++) {
 			for (int j = 0; j < world.getSize(); j++) {
-				world.setCell(new NullCreature(), i, j);
+				world.setCell(dummyCreature, i, j);
 			}
 		}
-	
 		world.setCell(null, 2, 3);
-
 		for (int i = 0; i < 7; i++) {
 			world.dayPassed();
 		}
-
-		assertThat(generator.generateUnoccupiedPosition(world)).isEqualTo(
-				new IntPair(2, 3));
-
+		assertThat(world.getCell(2, 3)).isInstanceOf(GrassCreature.class);
 	}
-
 }
