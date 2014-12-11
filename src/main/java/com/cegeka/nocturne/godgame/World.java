@@ -1,6 +1,8 @@
 package com.cegeka.nocturne.godgame;
 
-public class World {
+import com.cegeka.nocturne.godgame.time.TimerListener;
+
+public class World implements TimerListener{
     private final int size;
     private Creature[][] cells = null;
     private int daysCounter;
@@ -13,10 +15,10 @@ public class World {
         cells = new Creature[i][i];
     }
     
-    public int getSize() {
-		return size;
-	}
-
+    public double getSize() {
+        return this.size;
+    }
+    
 	public double getCellCount() {
         return this.size * this.size;
     }
@@ -35,6 +37,11 @@ public class World {
 
     public int getAge() {
         return daysCounter;
+    }
+
+    @Override
+    public void dayPassed() {
+        passTheDay();
     }
 
 }

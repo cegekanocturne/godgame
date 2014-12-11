@@ -37,11 +37,12 @@ public class WorldTest {
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void givenAWorld_itIsSadlyFinite() {
-        world.getCell(6, 6);
+        world.getCell(5, 5);
     }
 
     @Test
     public void givenAWorld_whenRetrievingACell_thenPreviouslySavedCellIsReturned() {
+    	//assertThat(creature).isNull();
         world.setCell(creature, 0, 1);
         assertThat(world.getCell(0, 1)).isEqualTo(creature);
     }
