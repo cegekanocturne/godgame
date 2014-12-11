@@ -9,7 +9,7 @@ public class DemoTest {
 
 	public void pauseGame() {
 		System.out.println("Pause game!");
-		timer.stop();
+		timer.pause();
 	}
 
 	public void resumeGame() {

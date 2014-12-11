@@ -8,7 +8,8 @@ public class Timer implements TimerInterface {
 
 	private List<TimerListener> timerListeners = new ArrayList<>();
 
-	private AtomicBoolean stopped;
+    private AtomicBoolean stopped;
+    private AtomicBoolean shutDown = new AtomicBoolean(false);
 
 	public List<TimerListener> getTimerListeners() {
 		return timerListeners;
@@ -28,50 +29,63 @@ public class Timer implements TimerInterface {
 		timerListeners.add(timerListener);
 	}
 
-	public void start() {
+    public void start() {
+        stopped = new AtomicBoolean(false);
+        startThread();
+    }
 
-		stopped = new AtomicBoolean(false);
+    public void startThread() {
+        Runnable timeRunnable = getTimerRunnable();
+        Thread timeThread = new Thread(timeRunnable);
+        timeThread.start();
+    }
 
-		Runnable timeRunnable = new Runnable() {
+    private Runnable getTimerRunnable() {
+        return new Runnable() {
 
-			@Override
-			public void run() {
-				while (true) {
+                @Override
+                public void run() {
 
-					while (!stopped.get()) {
-						try {
-							Thread.sleep(dayPeriodMs);
-							for (TimerListener timerListener : timerListeners) {
-								timerListener.dayPassed();
-							}
-						} catch (InterruptedException e) {
-							System.out.println("World interrupted");
-						}
-					}
+                    while (!shutDown.get()) {
 
-					try {
-						Thread.sleep(50);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+                        while (!stopped.get()) {
+                            try {
 
-				}
+                                Thread.sleep(dayPeriodMs);
 
-			}
+                                if (!stopped.get()) {
+                                    callListeners();
+                                }
 
-		};
+                            } catch (InterruptedException e) {
+                                System.out.println("World interrupted");
+                            }
+                        }
+                    }
+                }
+            };
+    }
 
-		Thread timeThread = new Thread(timeRunnable);
-		timeThread.start();
-	}
+    public void callListeners() {
+        for (TimerListener timerListener : timerListeners) {
+            timerListener.dayPassed();
+        }
+    }
 
-	public void stop() {
-		stopped.set(true);
+    public void pause() {
+        stopped.set(true);
+    }
 
-	}
+    public void resume() {
+        stopped.set(false);
+    }
 
-	public void resume() {
-		stopped.set(false);
-	}
+    @Override
+    public boolean getStopped() {
+        return stopped.get();
+    }
+
+    public void shutdown(){
+        this.shutDown.set(true);
+    }
 }

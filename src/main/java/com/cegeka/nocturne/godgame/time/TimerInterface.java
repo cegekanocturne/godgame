@@ -4,6 +4,9 @@ public interface TimerInterface {
 
     void addTimerListener(TimerListener timerListener);
     void start();
-    void stop();
+    void pause();
     void resume();
+
+    void shutdown();
+    boolean getStopped();
 }
