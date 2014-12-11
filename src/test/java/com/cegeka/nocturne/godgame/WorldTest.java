@@ -42,9 +42,9 @@ public class WorldTest {
 
     @Test
     public void givenAWorld_whenRetrievingACell_thenPreviouslySavedCellIsReturned() {
-        world.setCell(creature, 0, 0);
+        world.setCell(creature, 0, 1);
 
-        assertThat(world.getCell(0, 0)).isEqualTo(creature);
+        assertThat(world.getCell(0, 1)).isEqualTo(creature);
     }
 
     @Test
