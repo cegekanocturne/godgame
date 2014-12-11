@@ -4,12 +4,12 @@ import java.util.Random;
 
 
 public class GrassGenerator {
-	public synchronized boolean generateAndAddToWorld (int age, World world) {
+	public synchronized static boolean generateAndAddToWorld (int age, World world) {
 		return false;
 	}
 	 
 
-	public int countUnocuppiedCells(World world) {
+	public static int countUnocuppiedCells(World world) {
 		int count = 0;
 		for ( int i = 0; i < world.getSize(); i++) {
 			for (int j = 0; j < world.getSize(); j++) {
@@ -22,7 +22,7 @@ public class GrassGenerator {
 		return count;
 	}
 
-	public IntPair generateUnoccupiedPosition(World world) {
+	public static IntPair generateUnoccupiedPosition(World world) {
 		int emptyCount = countUnocuppiedCells(world);
 		if (emptyCount == 0) {
 			return null;
