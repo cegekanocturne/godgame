@@ -18,12 +18,13 @@ public class DemoTest {
 	}
 
 	public void doItAll() {
-		World world = new World(5);
+		World world = new World(30);
+
 
 		Displayer displayer = new Displayer(world);
-
+		
 		timer = new Timer();
-		timer.setDayPeriodMs(100);
+		timer.setDayPeriodMs(1000);
 		timer.addTimerListener(world);
 
 		Thread t = new Thread(new Runnable() {
@@ -59,7 +60,7 @@ public class DemoTest {
 					}
 
 				try {
-					Thread.sleep(50);
+					Thread.sleep(1000);
 				} catch (Exception e) {
 
 				}
